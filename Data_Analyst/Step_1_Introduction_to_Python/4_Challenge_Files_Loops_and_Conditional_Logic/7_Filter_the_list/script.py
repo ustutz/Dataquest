@@ -40,9 +40,19 @@ class Script:
 			row = (data_list[_g] if _g >= 0 and _g < len(data_list) else None)
 			_g = (_g + 1)
 			comma_list = row.split(",")
-			numerical_list = [(comma_list[0] if 0 < len(comma_list) else None), Std.parseFloat((comma_list[1] if 1 < len(comma_list) else None))]
-			numerical_data.append(numerical_list)
-		print(str(numerical_data[0:5]))
+			number_of_people = Std.parseFloat((comma_list[1] if 1 < len(comma_list) else None))
+			if (number_of_people >= 1000):
+				numerical_list = [(comma_list[0] if 0 < len(comma_list) else None), number_of_people]
+				numerical_data.append(numerical_list)
+		thousand_or_greater = list()
+		_g1 = 0
+		while (_g1 < len(numerical_data)):
+			entry = (numerical_data[_g1] if _g1 >= 0 and _g1 < len(numerical_data) else None)
+			_g1 = (_g1 + 1)
+			if ((entry[1] if 1 < len(entry) else None) >= 1000):
+				x = (entry[0] if 0 < len(entry) else None)
+				thousand_or_greater.append(x)
+		print(str(thousand_or_greater[0:10]))
 
 
 class Std:

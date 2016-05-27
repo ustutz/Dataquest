@@ -11,13 +11,16 @@ class Script {
 		data = StringTools.replace( data, '\r', '' );
 		var data_list = data.split( '\n' );
 		
-		var string_data = [];
+		var numerical_data = [];
 		for ( row in data_list ) {
 			var comma_list = row.split( ',' );
-			string_data.push( comma_list );
+			
+			var numerical_list:Array<Dynamic> = [comma_list[0], Std.parseFloat( comma_list[1] )];
+			
+			numerical_data.push( numerical_list );
 		}
 		
-		trace( string_data.slice( 0, 5 ));
+		trace( numerical_data.slice( 0, 5 ));
 	}
 	
 }
