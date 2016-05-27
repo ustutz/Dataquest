@@ -1,7 +1,6 @@
 package;
 
 import python.Lib;
-import sys.io.File;
 
 class Script {
 	
