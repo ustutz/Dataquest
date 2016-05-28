@@ -58,7 +58,15 @@ class Script:
 	def main():
 		f = sys_io_File.getContent("nfl.csv")
 		csv = format_csv_Reader.parseCsv(f)
-		print(str(csv))
+		counter = 0
+		_g = 0
+		while (_g < len(csv)):
+			row = (csv[_g] if _g >= 0 and _g < len(csv) else None)
+			_g = (_g + 1)
+			if ((row[2] if 2 < len(row) else None) == "New England Patriots"):
+				counter = (counter + 1)
+		patriots_wins = counter
+		print(str(patriots_wins))
 
 
 class Std:

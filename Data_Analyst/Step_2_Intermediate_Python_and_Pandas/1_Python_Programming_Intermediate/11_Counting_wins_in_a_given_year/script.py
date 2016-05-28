@@ -52,13 +52,29 @@ class Lambda:
 
 class Script:
 	_hx_class_name = "Script"
-	_hx_statics = ["main"]
+	_hx_statics = ["csv", "main", "nfl_wins"]
+	csv = None
 
 	@staticmethod
 	def main():
 		f = sys_io_File.getContent("nfl.csv")
-		csv = format_csv_Reader.parseCsv(f)
-		print(str(csv))
+		Script.csv = format_csv_Reader.parseCsv(f)
+		browns_2010_wins = Script.nfl_wins("2010","Cleveland Browns")
+		eagles_2011_wins = Script.nfl_wins("2011","Philadelphia Eagles")
+		print(str(("Cleveland Browns 2010 " + Std.string(browns_2010_wins))))
+		print(str(("Philadelphia Eagles 2011 " + Std.string(eagles_2011_wins))))
+
+	@staticmethod
+	def nfl_wins(year,team_name):
+		counter = 0
+		_g = 0
+		_g1 = Script.csv
+		while (_g < len(_g1)):
+			row = (_g1[_g] if _g >= 0 and _g < len(_g1) else None)
+			_g = (_g + 1)
+			if (((row[0] if 0 < len(row) else None) == year) and (((row[2] if 2 < len(row) else None) == team_name))):
+				counter = (counter + 1)
+		return counter
 
 
 class Std:
