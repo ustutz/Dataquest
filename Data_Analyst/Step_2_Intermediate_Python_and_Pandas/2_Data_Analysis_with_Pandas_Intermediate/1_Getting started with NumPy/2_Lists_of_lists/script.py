@@ -64,38 +64,100 @@ class Reflect:
 class Script:
     _hx_class_name = "Script"
     __slots__ = ()
-    _hx_statics = ["csv", "main", "nfl_wins"]
-    csv = None
+    _hx_statics = ["main"]
 
     @staticmethod
     def main():
-        Script.csv = format_csv_Reader.parseCsv(sys_io_File.getContent("nfl.csv"))
-        browns_2010_wins = Script.nfl_wins("2010","Cleveland Browns")
-        eagles_2011_wins = Script.nfl_wins("2011","Philadelphia Eagles")
-        print(str(("Cleveland Browns 2010 " + Std.string(browns_2010_wins))))
-        print(str(("Philadelphia Eagles 2011 " + Std.string(eagles_2011_wins))))
-
-    @staticmethod
-    def nfl_wins(year,team_name):
-        counter = 0
+        world_alcohol = format_csv_Reader.parseCsv(sys_io_File.getContent("world_alcohol.csv"))
+        years = list()
         _g = 0
-        _g1 = Script.csv
-        while (_g < len(_g1)):
-            row = (_g1[_g] if _g >= 0 and _g < len(_g1) else None)
+        while (_g < len(world_alcohol)):
+            row = (world_alcohol[_g] if _g >= 0 and _g < len(world_alcohol) else None)
             _g = (_g + 1)
-            if (((row[0] if 0 < len(row) else None) == year) and (((row[2] if 2 < len(row) else None) == team_name))):
-                counter = (counter + 1)
-        return counter
+            x = Std.parseInt((row[0] if 0 < len(row) else None))
+            years.append(x)
+        years = years[1:None]
+        total = 0
+        _g1 = 0
+        while (_g1 < len(years)):
+            year = (years[_g1] if _g1 >= 0 and _g1 < len(years) else None)
+            _g1 = (_g1 + 1)
+            total = (total + year)
+        print(str((total / len(years))))
 
 
 class Std:
     _hx_class_name = "Std"
     __slots__ = ()
-    _hx_statics = ["string"]
+    _hx_statics = ["string", "parseInt", "shortenPossibleNumber", "parseFloat"]
 
     @staticmethod
     def string(s):
         return python_Boot.toString1(s,"")
+
+    @staticmethod
+    def parseInt(x):
+        if (x is None):
+            return None
+        try:
+            return int(x)
+        except Exception as _hx_e:
+            _hx_e1 = _hx_e.val if isinstance(_hx_e, _HxException) else _hx_e
+            e = _hx_e1
+            try:
+                prefix = HxString.substr(x,0,2).lower()
+                if (prefix == "0x"):
+                    return int(x,16)
+                raise _HxException("fail")
+            except Exception as _hx_e:
+                _hx_e1 = _hx_e.val if isinstance(_hx_e, _HxException) else _hx_e
+                e1 = _hx_e1
+                x1 = Std.parseFloat(x)
+                r = None
+                try:
+                    r = int(x1)
+                except Exception as _hx_e:
+                    _hx_e1 = _hx_e.val if isinstance(_hx_e, _HxException) else _hx_e
+                    e2 = _hx_e1
+                    r = None
+                if (r is None):
+                    r1 = Std.shortenPossibleNumber(x)
+                    if (r1 != x):
+                        return Std.parseInt(r1)
+                    else:
+                        return None
+                return r
+
+    @staticmethod
+    def shortenPossibleNumber(x):
+        r = ""
+        _g1 = 0
+        _g = len(x)
+        while (_g1 < _g):
+            i = _g1
+            _g1 = (_g1 + 1)
+            c = ("" if (((i < 0) or ((i >= len(x))))) else x[i])
+            _g2 = HxString.charCodeAt(c,0)
+            if (_g2 is None):
+                break
+            elif (((((((((((_g2 == 57) or ((_g2 == 56))) or ((_g2 == 55))) or ((_g2 == 54))) or ((_g2 == 53))) or ((_g2 == 52))) or ((_g2 == 51))) or ((_g2 == 50))) or ((_g2 == 49))) or ((_g2 == 48))) or ((_g2 == 46))):
+                r = (("null" if r is None else r) + ("null" if c is None else c))
+            else:
+                break
+        return r
+
+    @staticmethod
+    def parseFloat(x):
+        try:
+            return float(x)
+        except Exception as _hx_e:
+            _hx_e1 = _hx_e.val if isinstance(_hx_e, _HxException) else _hx_e
+            e = _hx_e1
+            if (x is not None):
+                r1 = Std.shortenPossibleNumber(x)
+                if (r1 != x):
+                    return Std.parseFloat(r1)
+            return Math.NaN
 
 
 class format_csv_Reader:
