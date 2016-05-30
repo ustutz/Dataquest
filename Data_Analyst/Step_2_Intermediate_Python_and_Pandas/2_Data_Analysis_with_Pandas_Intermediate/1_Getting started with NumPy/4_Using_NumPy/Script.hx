@@ -1,16 +1,12 @@
 package;
+using PyHelpers;
 
-import format.csv.Data.Record;
-import format.csv.Reader;
-import python.Lib;
-import sys.io.File;
-
-class Script {
+class Script  {
+	
 	
 	static function main() {
 		
-		var world_alcohol = NumPy.genfromtxt( "world_alcohol.csv", null, '#', ',' );
-		
+		var world_alcohol = NumPy.genfromtxt.call( "world_alcohol.csv", delimiter => ',' );
 		trace( world_alcohol );
 	}
 

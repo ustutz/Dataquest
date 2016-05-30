@@ -34,7 +34,8 @@ class Script:
 	@staticmethod
 	def main():
 		world_alcohol = NumPy.genfromtxt("world_alcohol.csv",delimiter = ",")
-		print(str(world_alcohol))
+		world_alcohol_dtype = world_alcohol.dtype
+		print(str(world_alcohol_dtype))
 
 
 class python_HaxeIterator:

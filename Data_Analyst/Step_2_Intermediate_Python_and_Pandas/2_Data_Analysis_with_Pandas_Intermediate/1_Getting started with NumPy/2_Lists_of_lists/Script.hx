@@ -1,6 +1,5 @@
 package;
 
-import format.csv.Data.Record;
 import format.csv.Reader;
 import python.Lib;
 import sys.io.File;
