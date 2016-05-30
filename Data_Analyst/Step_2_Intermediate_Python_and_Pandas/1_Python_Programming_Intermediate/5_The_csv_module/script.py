@@ -1,6 +1,6 @@
+import csv as Csv
 import math as python_lib_Math
 import math as Math
-import builtins as python_lib_Builtins
 import functools as python_lib_Functools
 import inspect as python_lib_Inspect
 from io import StringIO as python_lib_io_StringIO
@@ -56,9 +56,10 @@ class Script:
 
 	@staticmethod
 	def main():
-		f = sys_io_File.getContent("nfl.csv")
-		csv = format_csv_Reader.parseCsv(f)
-		print(str(csv))
+		f = open("nfl.csv","r")
+		csvreader = Csv.reader(f)
+		nfl = list(csvreader)
+		print(str(nfl[0:10]))
 
 
 class Std:
@@ -699,18 +700,6 @@ class HxString:
 			if (_hx_len == 0):
 				return ""
 			return s[startIndex:(startIndex + _hx_len)]
-
-
-class sys_io_File:
-	_hx_class_name = "sys.io.File"
-	_hx_statics = ["getContent"]
-
-	@staticmethod
-	def getContent(path):
-		f = python_lib_Builtins.open(path,"r",-1,"utf-8",None,"")
-		content = f.read(-1)
-		f.close()
-		return content
 
 Math.NEGATIVE_INFINITY = float("-inf")
 Math.POSITIVE_INFINITY = float("inf")

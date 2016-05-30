@@ -6,12 +6,25 @@ import sys.io.File;
 
 class Script {
 	
-	static function main() {
+	// using haxe csv library
+/*	static function main() {
 		
 		var f = File.getContent( "nfl.csv" );
-		var csv = Reader.parseCsv( f );
+		var nfl = Reader.parseCsv( f );
 		
-		trace ( csv );
+		trace ( nfl.slice( 0, 10 ) );
 	}
-
+*/
+	// using python csv library
+	static function main() {
+		
+		var f = untyped open( "nfl.csv", "r" );
+		var csvreader = Csv.reader(f);
+		
+		var nfl:Array<Dynamic> = untyped list( csvreader );
+		trace( nfl.slice( 0, 10 ));
+		
+	}
+	
+	
 }
