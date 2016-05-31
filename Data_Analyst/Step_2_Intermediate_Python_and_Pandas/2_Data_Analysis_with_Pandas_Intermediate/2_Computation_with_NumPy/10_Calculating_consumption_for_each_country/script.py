@@ -61,7 +61,7 @@ class DynamicIterationAdaptor:
 
 class Script:
 	_hx_class_name = "Script"
-	_hx_statics = ["countries", "main", "find_consumption_for_country_in_year", "add_country_to_array"]
+	_hx_statics = ["countries", "main", "consumption_country_year", "add_country_to_array"]
 	countries = None
 
 	@staticmethod
@@ -82,12 +82,12 @@ class Script:
 		while (_g1 < len(_g11)):
 			country1 = (_g11[_g1] if _g1 >= 0 and _g1 < len(_g11) else None)
 			_g1 = (_g1 + 1)
-			country_consumption = Script.find_consumption_for_country_in_year(world_alcohol,country1,"1986")
+			country_consumption = Script.consumption_country_year(world_alcohol,country1,"1989")
 			totals.h[country1] = country_consumption
 			print(str(((("null" if country1 is None else country1) + " consumed ") + Std.string(country_consumption))))
 
 	@staticmethod
-	def find_consumption_for_country_in_year(world_alcohol,country,year):
+	def consumption_country_year(world_alcohol,country,year):
 		country_year_filter = (world_alcohol[:,0] == year) & (world_alcohol[:,2] == country)
 		country_year = world_alcohol[country_year_filter,:]
 		country_alcohol = country_year[:, 4]

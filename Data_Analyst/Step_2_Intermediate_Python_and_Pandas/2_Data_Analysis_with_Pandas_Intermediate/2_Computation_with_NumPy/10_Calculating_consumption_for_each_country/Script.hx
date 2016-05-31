@@ -23,13 +23,13 @@ class Script {
 		var totals = new Map<String,Float>();
 		
 		for ( country in countries ) {
-			var country_consumption = find_consumption_for_country_in_year( world_alcohol, country, "1986" );
+			var country_consumption = consumption_country_year( world_alcohol, country, "1989" );
 			totals.set( country, country_consumption ); trace( country + " consumed " + Std.string( country_consumption ));
 		}
 
 	}
 
-	static function find_consumption_for_country_in_year( world_alcohol:NumPy, country:String, year:String ):Float {
+	static function consumption_country_year( world_alcohol:NumPy, country:String, year:String ):Float {
 		
 		var country_year_filter = Syntax.pythonCode( '(world_alcohol[:,0] == year) & (world_alcohol[:,2] == country)' );
 		var country_year = Syntax.pythonCode( 'world_alcohol[country_year_filter,:]' );
