@@ -2,7 +2,6 @@ import math as python_lib_Math
 import math as Math
 import builtins as python_lib_Builtins
 import inspect as python_lib_Inspect
-from io import StringIO as python_lib_io_StringIO
 
 
 class Enum:
@@ -33,17 +32,17 @@ class Script:
 	@staticmethod
 	def main():
 		weather = Script.getWeatherWithoutHeader()
-		weather_counts = haxe_ds_StringMap()
+		weather_counts = dict()
 		_g = 0
 		while (_g < len(weather)):
 			day = (weather[_g] if _g >= 0 and _g < len(weather) else None)
 			_g = (_g + 1)
-			if day in weather_counts.h:
-				value = (weather_counts.h.get(day,None) + 1)
-				weather_counts.h[day] = value
+			if day in weather_counts:
+				val = (weather_counts.get(day) + 1)
+				weather_counts[day] = val
 			else:
-				weather_counts.h[day] = 1
-		print(str(weather_counts.toString()))
+				weather_counts[day] = 1
+		print(str(weather_counts))
 
 	@staticmethod
 	def getWeatherWithoutHeader():
@@ -71,15 +70,6 @@ class Script:
 		return weather_data
 
 
-class Std:
-	_hx_class_name = "Std"
-	_hx_statics = ["string"]
-
-	@staticmethod
-	def string(s):
-		return python_Boot.toString1(s,"")
-
-
 class StringTools:
 	_hx_class_name = "StringTools"
 	_hx_statics = ["replace"]
@@ -92,43 +82,6 @@ class StringTools:
 		else:
 			_this = s.split(sub)
 		return by.join([python_Boot.toString1(x1,'') for x1 in _this])
-
-
-class haxe_IMap:
-	_hx_class_name = "haxe.IMap"
-
-
-class haxe_ds_StringMap:
-	_hx_class_name = "haxe.ds.StringMap"
-	_hx_fields = ["h"]
-	_hx_methods = ["keys", "toString"]
-
-	def __init__(self):
-		self.h = None
-		self.h = dict()
-
-	def keys(self):
-		this1 = None
-		_this = self.h.keys()
-		this1 = iter(_this)
-		return python_HaxeIterator(this1)
-
-	def toString(self):
-		s_b = python_lib_io_StringIO()
-		s_b.write("{")
-		it = self.keys()
-		_hx_local_0 = it
-		while _hx_local_0.hasNext():
-			i = _hx_local_0.next()
-			s_b.write(Std.string(i))
-			s_b.write(" => ")
-			x = Std.string(self.h.get(i,None))
-			s_b.write(Std.string(x))
-			if it.hasNext():
-				s_b.write(", ")
-		s_b.write("}")
-		return s_b.getvalue()
-
 
 
 class haxe_io_Eof:
@@ -376,45 +329,6 @@ class python_Boot:
 			if real in python_Boot.keywords:
 				return real
 		return name
-
-
-class python_HaxeIterator:
-	_hx_class_name = "python.HaxeIterator"
-	_hx_fields = ["it", "x", "has", "checked"]
-	_hx_methods = ["next", "hasNext"]
-
-	def __init__(self,it):
-		self.it = None
-		self.x = None
-		self.has = None
-		self.checked = None
-		self.checked = False
-		self.has = False
-		self.x = None
-		self.it = it
-
-	def next(self):
-		if (not self.checked):
-			self.hasNext()
-		self.checked = False
-		return self.x
-
-	def hasNext(self):
-		if (not self.checked):
-			try:
-				self.x = self.it.__next__()
-				self.has = True
-			except Exception as _hx_e:
-				_hx_e1 = _hx_e
-				if isinstance(_hx_e1, StopIteration):
-					s = _hx_e1
-					self.has = False
-					self.x = None
-				else:
-					raise _hx_e
-			self.checked = True
-		return self.has
-
 
 
 class _hx_AnonObject:

@@ -1,12 +1,13 @@
 package;
 
+import python.Dict;
 import python.Lib;
 
 class Script {
 	
 	static function main() {
 		
-		var president_ranks = new Map<String, Int>();
+		var president_ranks = new Dict<String, Int>();
 		
 		president_ranks.set( "FDR", 1 );
 		president_ranks.set( "Lincoln", 2 );

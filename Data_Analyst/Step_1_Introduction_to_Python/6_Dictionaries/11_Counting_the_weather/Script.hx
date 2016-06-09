@@ -1,6 +1,6 @@
 package;
 
-import python.Lib;
+import python.Dict;
 import sys.io.File;
 
 class Script {
@@ -9,10 +9,10 @@ class Script {
 		
 		var weather = getWeatherWithoutHeader();
 		
-		var weather_counts = new Map<String, Int>();
+		var weather_counts = new Dict<String, Int>();
 		
 		for ( day in weather ) {
-			if ( weather_counts.exists( day )) {
+			if ( weather_counts.hasKey( day )) {
 				weather_counts.set( day, weather_counts.get( day ) + 1 );
 			} else {
 				weather_counts.set( day, 1 );
