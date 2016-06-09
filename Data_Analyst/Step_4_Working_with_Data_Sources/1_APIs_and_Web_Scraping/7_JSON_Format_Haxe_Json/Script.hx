@@ -28,6 +28,7 @@ class Script {
 		var fast_food_franchise_string = Json.stringify( fast_food_franchise );
 		trace( untyped type( fast_food_franchise_string ));
 		
-	
+		var fast_food_franchise_2 = Json.parse( fast_food_franchise_string );
+		trace( fast_food_franchise_2 );
 	}
 }

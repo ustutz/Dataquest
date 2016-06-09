@@ -88,6 +88,8 @@ class Script:
 		fast_food_franchise = _g
 		fast_food_franchise_string = haxe_format_JsonPrinter.print(fast_food_franchise,None,None)
 		print(str(type(fast_food_franchise_string)))
+		fast_food_franchise_2 = python_lib_Json.loads(fast_food_franchise_string,**python__KwArgs_KwArgs_Impl_.fromT(_hx_AnonObject({'object_hook': python_Lib.dictToAnon})))
+		print(str(fast_food_franchise_2))
 Script._hx_class = Script
 
 

@@ -1,5 +1,7 @@
 package;
+import python.Dict;
 import python.Syntax;
+import python.lib.Json;
 
 class Script {
 
@@ -17,12 +19,12 @@ class Script {
 		trace( untyped type( Json.loads( best_food_chains_string )));
 
 		// Make a dictionary
-		var fast_food_franchise = [
-			"Subway"=> 24722,
-			"McDonalds"=> 14098,
-			"Starbucks"=> 10821,
-			"Pizza Hut"=> 7600
-		];
+		var fast_food_franchise = new Dict<String, Int>();
+		
+		fast_food_franchise.set( "Subway", 24722 );
+		fast_food_franchise.set( "McDonalds", 14098 );
+		fast_food_franchise.set( "Starbucks", 10821 );
+		fast_food_franchise.set( "Pizza Hut", 7600 );
 
 		// We can also dump a dictionary to a string and load it.
 		var fast_food_franchise_string = Json.dumps( fast_food_franchise ); // not working: fast_food_franchise is not serializable
