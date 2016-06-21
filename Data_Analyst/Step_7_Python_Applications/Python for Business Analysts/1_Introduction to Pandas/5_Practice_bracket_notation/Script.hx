@@ -9,7 +9,7 @@ class Script {
 		
 		var housing_2013 = Pandas.read_csv( "../Hud_2013.csv" );
 		
-		var cols = ['FMR', 'AGE1', 'TOTSAL'];
+		var cols = ['AGE1', 'FMR', 'TOTSAL'];
 		trace( cols );
 		
 		var filtered_housing_2013 = Syntax.pythonCode( 'housing_2013[cols]' );

@@ -50,7 +50,7 @@ class Script:
     @staticmethod
     def main():
         housing_2013 = pandas_Pandas_Module.read_csv("../Hud_2013.csv")
-        cols = ["FMR", "AGE1", "TOTSAL"]
+        cols = ["AGE1", "FMR", "TOTSAL"]
         print(str((("[" + HxOverrides.stringOrNull(",".join([python_Boot.toString1(x1,'') for x1 in cols]))) + "]")))
         filtered_housing_2013 = housing_2013[cols]
         print(str(filtered_housing_2013.head(5)))
