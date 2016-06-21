@@ -24,7 +24,7 @@
     <option noInlineOnDebug="False" />
     <option mainClass="Script" />
     <option enabledebug="False" />
-    <option additional="-cp ../../../../../pyextern" />
+    <option additional="-cp ../../../../pyextern" />
   </build>
   <!-- haxelib libraries -->
   <haxelib>
