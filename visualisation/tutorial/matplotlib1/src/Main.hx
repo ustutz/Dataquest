@@ -1,11 +1,8 @@
 package;
 using PyHelpers;
 
-import python.Lib;
-import python.Syntax;
 import numpy.Numpy;
-import matplotlib.pyplot.Pyplot;
-import seaborn.Seaborn;
+//import matplotlib.pyplot.Pyplot; // not working! - compiler adds * and ** befor vars - works with custom Pyplot extern
 
 /**
  * ...
@@ -19,16 +16,11 @@ class Main {
 		var cos = Numpy.cos( linspace );
 		var sin = Numpy.sin( linspace );
 		
-		Pyplot.plot( linspace, cos );
+		Pyplot.plot( linspace, cos ); 
 		Pyplot.plot( linspace, sin );
 		
 		Pyplot.show();
 		
-	}
-	
-	static function call( x:Float ):Void {
-		
-		trace( x );
 	}
 	
 }
