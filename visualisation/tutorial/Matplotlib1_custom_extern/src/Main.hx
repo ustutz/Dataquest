@@ -3,7 +3,7 @@ using PyHelpers;
 
 import numpy.Numpy;
 
-// error with extern - compiler adds * and ** befor vars
+// error with extern - compiler adds * and ** befor vars when writing arguments fo plot function like this
 // import matplotlib.pyplot.Pyplot;
 
 // I created a custom Pyplot extern for just the two parameters of plot
