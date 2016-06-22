@@ -1,0 +1,10 @@
+/pyextern/textwrap
+/pyextern/docutils
+/pyextern/importlib
+/pyextern/inspect
+/pyextern/matplotlib
+/pyextern/numpy
+/pyextern/pandas
+/pyextern/pkgutil
+/pyextern/scipy
+/pyextern/seaborn
