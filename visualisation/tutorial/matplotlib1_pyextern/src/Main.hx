@@ -3,7 +3,6 @@ using PyHelpers;
 
 import numpy.Numpy;
 import matplotlib.pyplot.Pyplot;
-import python.Dict;
 import python.VarArgs;
 
 /**
@@ -18,12 +17,29 @@ class Main {
 		var cos = Numpy.cos( linspace );
 		var sin = Numpy.sin( linspace );
 		
-		// to solve arguments problem: first define arguments als VarArgs
-		var args1:VarArgs<Dynamic> = [ linspace, cos ];
-		Pyplot.plot.call( args1 ); 
+		/* This doesn't work.
+		Pyplot.plot( linspace, cos );
+		Pyplot.plot( linspace, sin );
 		
-		var args2:VarArgs<Dynamic> = [ linspace, sin ];
-		Pyplot.plot.call( args2 );
+		created python code has asterisks befor vars:
+		
+		-----------------------------------------------------
+        
+		cos = numpy_Numpy_Module.cos(*linspace)
+        sin = numpy_Numpy_Module.sin(*linspace)
+        matplotlib_pyplot_Pyplot_Module.plot(*linspace,**cos)
+        matplotlib_pyplot_Pyplot_Module.plot(*linspace,**sin)
+		
+		-----------------------------------------------------
+		*/
+		
+		// There are two ways to solve arguments problem
+		// 1. define args as VarArgs
+		var args1:VarArgs<Dynamic> = [ linspace, cos ];
+		Pyplot.plot( args1 ); 
+		
+		// 2. using the call function of PyHelpers
+		Pyplot.plot.call( linspace, sin );
 		
 		Pyplot.show();
 		

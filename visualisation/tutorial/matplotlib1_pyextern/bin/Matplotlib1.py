@@ -17,9 +17,8 @@ class Main:
         cos = numpy_Numpy_Module.cos(linspace)
         sin = numpy_Numpy_Module.sin(linspace)
         this1 = [linspace, cos]
-        matplotlib_pyplot_Pyplot_Module.plot(*this1,**dict())
-        this2 = [linspace, sin]
-        matplotlib_pyplot_Pyplot_Module.plot(*this2,**dict())
+        matplotlib_pyplot_Pyplot_Module.plot(*this1)
+        matplotlib_pyplot_Pyplot_Module.plot(linspace,sin,**dict())
         matplotlib_pyplot_Pyplot_Module.show()
 
 
