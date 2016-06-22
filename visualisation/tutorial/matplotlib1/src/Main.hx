@@ -2,7 +2,11 @@ package;
 using PyHelpers;
 
 import numpy.Numpy;
-//import matplotlib.pyplot.Pyplot; // not working! - compiler adds * and ** befor vars - works with custom Pyplot extern
+
+// error with extern - compiler adds * and ** befor vars
+// import matplotlib.pyplot.Pyplot;
+
+// I created a custom Pyplot extern for just the two parameters of plot
 
 /**
  * ...
