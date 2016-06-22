@@ -9,6 +9,8 @@ The directories of the missions contain the following files
 - **compile.hxml**  
 Instructions for the [Haxe](http://haxe.org/) compiler to create the Python script.
 If you don't use [Haxedevelop](http://haxedevelop.org/) you can compile the Haxe code with this script.
+When external libraries like pandas or numpy are use you sometimes have to include this line  
+<code>-cp ../../../../../pyextern</code>
 
 - **Project.hxproj**  
 Project file for users of [Haxedevelop](http://haxedevelop.org/)
