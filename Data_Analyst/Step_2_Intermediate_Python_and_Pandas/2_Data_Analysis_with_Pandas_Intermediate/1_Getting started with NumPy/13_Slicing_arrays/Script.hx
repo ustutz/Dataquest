@@ -14,7 +14,7 @@ class Script {
 						 //]);
 		//trace( Syntax.pythonCode( 'matrix[1:3,0:2]'));
 
-	var world_alcohol = NumPy.genfromtxt.call( "world_alcohol.csv", dtype=>'U75', skip_header=>true, delimiter=>"," );
+		var world_alcohol = NumPy.genfromtxt.call( "world_alcohol.csv", dtype=>'U75', skip_header=>true, delimiter=>"," );
 		
 		var first_twenty_regions = Syntax.pythonCode( 'world_alcohol[0:20,1:3]' );
 		
